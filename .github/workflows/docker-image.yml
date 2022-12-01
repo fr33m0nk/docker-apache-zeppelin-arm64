@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker buildx create --name apache-zeppelin-builder && docker buildx use apache-zeppelin-builder && docker buildx inspect --bootstrap && docker buildx build . --platform linux/amd64,linux/arm64,linux/arm/v7 --file Dockerfile --tag apache-zeppelin:$(date +%s)
+      run: docker buildx create --name apache-zeppelin-builder --driver docker-container && docker buildx use apache-zeppelin-builder && docker buildx inspect --bootstrap && docker buildx build . --platform linux/amd64,linux/arm64,linux/arm/v7 --file Dockerfile --tag apache-zeppelin:$(date +%s)
